@@ -4,4 +4,6 @@ Mytraining::Application.routes.draw do
   resources :trainings
 
   resources :people
+
+  root :to => "trainings#index"
 end
