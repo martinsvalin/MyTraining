@@ -1,29 +1,21 @@
-<h1>Listing trainings</h1>
-
-<table>
-  <tr>
-    <th>Start time</th>
-    <th>End time</th>
-    <th>Title</th>
-    <th>Location</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
-
+<h1>Trainings</h1>
+<button>Tidigare</button>
+<article>
 <% @trainings.each do |training| %>
-  <tr>
-    <td><%= training.start_time %></td>
-    <td><%= training.end_time %></td>
-    <td><%= training.title %></td>
-    <td><%= training.location %></td>
-    <td><%= link_to 'Show', training %></td>
-    <td><%= link_to 'Edit', edit_training_path(training) %></td>
-    <td><%= link_to 'Destroy', training, :confirm => 'Are you sure?', :method => :delete %></td>
-  </tr>
+    <section>
+        <header>
+            <h1><%= training.title %></h1>
+        </header>
+        <span><%= training.location %></span>
+        <time datetime="<%= training.start_time %>"><%= training.start_time %></time>
+        <time datetime="<%= training.end_time %>"><%= training.end_time %></time>
+        <footer>
+            <%= link_to 'Show', training %>
+            <%= link_to 'Edit', edit_training_path(training) %>
+            <%= link_to 'Destroy', training, :confirm => 'Are you sure?', :method => :delete %>
+        </footer>
+    </section>
 <% end %>
-</table>
-
-<br />
-
+</article>
+<button>Senare</button>
 <%= link_to 'New Training', new_training_path %>
