@@ -7,7 +7,6 @@ gem 'heroku'
 # To use debugger
 # gem 'ruby-debug'
 
-group :test do
-  gem 'rspec'
-  gem 'factory_girl_rails'
+group :test, :development do
+  gem 'rspec-rails'
 end

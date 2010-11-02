@@ -42,7 +42,6 @@ module Mytraining
     # Configure generators values. Many other options are available, be sure to check the documentation.
     config.generators do |g|
       g.test_framework  :rspec
-      g.fixture_replacement :factory_girl
     end
   end
 end
