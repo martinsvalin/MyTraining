@@ -7,7 +7,7 @@
     <article>
         <header class="clearfix">
             <time class="day" datetime="<%= training.start_time %>"><span>02</span><span>nov</span></time>
-            <h1><%= time_ago_in_words(training.start_time)%></h1>
+            <h1><%= training.start_time.to_s(:short)%></h1>
         </header>
         <div class="training">
         <% if workout = training.workout_for_person(@current_user) %>
