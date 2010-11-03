@@ -59,10 +59,15 @@ figure img {width: 100%;}
 } 
 ::selection 	 {background: rgb(255,255,0);}
 ::-moz-selection {background: rgb(255,255,0);}
-
+body{
+    margin:0 auto;
+}
 a{
     color:#0C6169;
     text-decoration:none;
+}
+#container{
+    margin:0 auto;
 }
 article{
     padding:14px 0 14px;
