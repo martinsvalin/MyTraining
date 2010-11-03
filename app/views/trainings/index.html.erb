@@ -1,31 +1,48 @@
 <h1>Trainings</h1>
-<button>Tidigare</button>
+<%#= render :partial => "/shared/navigation" %>
+<%= render :partial => "/shared/status" %>
+<!--<button><span>Tidigare</span><small>Läs in föregående vecka</small></button>-->
 <section>
 <% @trainings.each do |training| %>
     <article>
-        <header>
-            <h1><%= training.title %></h1>
+        <header class="clearfix">
+            <time class="day" datetime="<%= training.start_time %>"><span>02</span><span>nov</span></time>
+            <h1><%= time_ago_in_words(training.start_time)%></h1>
         </header>
+        <div class="training">
         <% if workout = training.workout_for_person(@current_user) %>
-            <%= button_to "Destroy", workout, :method => :delete%>
-            <span class="done">Done, <%= workout.points %> poäng!</span>
+            <div class="training-item clearfix">
+                <span class="name"><%= training.title %> <strong><%= workout.points %></strong> poäng </span>
+                <%= link_to(toggle_button(true), workout, :method => :delete, :class => "enable-disable")%>
+            </div>
         <% else %>
             <%= form_for training.workouts.new(:person => @current_user) do |f| %>
                 <%= f.hidden_field :person_id %>
                 <%= f.hidden_field :training_id %>
-                <%= f.submit %>
+                <%= f.submit "Deltog" %>
+                <div class="training-item clearfix">
+                    <span class="name"><%= training.title %> ... </span>
+                    <a class="enable-disable">
+                        <label class="cb-enable"><span>On</span></label>
+                        <label class="cb-disable selected"><span>Off</span></label>
+                        <input type="checkbox" id="checkbox" class="checkbox" />
+                    </a>
+                </div>
             <% end %>
         <% end%>
-        <span><%= training.location %></span>
-        <time datetime="<%= training.start_time %>"><%= training.start_time.to_s(:short) %></time>
-        <time datetime="<%= training.end_time %>"><%= training.end_time.to_s(:time) %></time>
-        <footer>
+            <span><%= training.location %></span>
+            <small>
+                <time datetime="<%= training.start_time %>"><%= training.start_time.to_s(:short) %></time>
+                <time datetime="<%= training.end_time %>"><%= training.end_time.to_s(:time) %></time>
+            </small>
+        </div>
+        <!--<footer>
             <%= link_to 'Show', training %>
             <%= link_to 'Edit', edit_training_path(training) %>
             <%= link_to 'Destroy', training, :confirm => 'Are you sure?', :method => :delete %>
-        </footer>
+        </footer>-->
     </article>
 <% end %>
 </section>
-<button>Senare</button>
+<!--<button>Senare</button>-->
 <%= link_to 'New Training', new_training_path %>

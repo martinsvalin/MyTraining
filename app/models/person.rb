@@ -4,4 +4,9 @@ class Person < ActiveRecord::Base
   def to_s
     name
   end
+  
+  def total_points
+    workouts.sum(:points)
+  end
+  
 end

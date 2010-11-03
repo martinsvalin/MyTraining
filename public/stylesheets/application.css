@@ -1,29 +1,212 @@
-body{
-    color:#2c2b2b;
+/*
+	Less Framework 2, version 2.0
+	by Joni Korpi
+	-----------------------------
+	http://lessframework.com
+*/
+
+
+
+/* 
+	Resets
+	------
+*/
+
+html, body, div, span, object, iframe, h1, h2, h3, h4, h5, h6, 
+p, blockquote, pre, a, abbr, address, cite, code, del, dfn, em, 
+img, ins, q, small, strong, sub, sup, dl, dt, dd, ol, ul, li, 
+fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td {
+	margin: 0;
+	padding: 0;
+	border: 0;
 }
+
+article, aside, figure, figure img, figcaption, hgroup,
+footer, header, nav, section, video, object {
+	display: block;
+}
+
+a img {border: 0;}
+
+figure {position: relative;}
+figure img {width: 100%;}
+/*
+	Typography presets
+	------------------
+*/
+
+.huge{
+	font-size: 48px;
+	line-height: 64px;
+	letter-spacing: -1px;
+}
+
+.large{
+	font-size: 26px;
+	line-height: 36px;
+}
+
+.big{
+	font-size: 16px;
+	line-height: 1.5px;
+}
+.normal, body {
+	font: 16px/1.5 Helvetica, Arial, sans-serif;
+}
+.small, small {
+	font-size: 13px;
+	line-height: 18px;
+} 
+::selection 	 {background: rgb(255,255,0);}
+::-moz-selection {background: rgb(255,255,0);}
+
 a{
-    color:#938945;
+    color:#0C6169;
     text-decoration:none;
 }
 article{
     padding:14px 0 14px;
     border-bottom:1px solid #f1f1f1; 
 }
-article h1{
+article:last-child{
+    border-bottom:none;
+}
+section{
+    padding:10px 24px;
+    background-color:#fff;
+    -moz-border-radius:10px;
+    -webkit-border-radius:10px;
+    border-radius:10px;
+    margin-bottom:40px;
+}
+article header h1{
+    float:left;
     color:#863261;
-    line-height:36px;
-    font-size:26px;
+    line-height:24px;
+    font-size:22px;    
+}
+article header time.day{
+    float:left;
+    text-align:center;
+    display:inline-block;
+    border-top:2px solid #f1f1f1;
+    border-bottom:2px solid #f1f1f1;
+    background:#fff;
+    padding:12px;
+    overflow:hidden;
+    line-height:24px;
+    -moz-border-radius:4px;
+    margin-right:24px;
+}
+header time.day span:first-child{
+    color:#91bd09;
+    text-shadow:0 2px 1px rgba(145,189,9,0.2);
+    font-size:24px;
+    font-weight:bold;
+}
+header time.day span:last-child{
+    margin-top:-6px;
+    font-size:16px;
+    line-height:16px;
+    display:block;
+}
+div.training{
+    margin-top:-40px;
+    margin-left:72px;
 }
 span.done{
-    color:#91BD09;
+    margin-top:-4px;
+    display:block;
 }
-div.field{
-    padding:0 0 20px 0;
+span.done strong{
+    font-size:1.2em;
+}
+div.status{
+    text-align:right;
+    padding:4px 24px;
+    -moz-border-radius:0 0 4px 4px;
+    margin:8px 0;
+    text-shadow:0px 2px 1px rgba(0,0,0,0.1);
+}
+.training-item{
+    padding-bottom:0px;
+    line-height:30px;
+}
+.training-item span.name{
+    float:left;
+}
+.enable-disable{
+    float:right;
+    display:inline-block;
+    -moz-border-radius:6px;
+    border-radius:6px;
+    background-color:#f1f1f1;
+    border: 1px solid #ccc;
+    line-height:16px;
+    color:#000;
+}
+.cb-enable, .cb-disable{ 
+    display: block;
+    float: left; 
+}
+.cb-enable{
+    -moz-border-radius:6px 0 0 6px;
+    border-radius:6px 0 0 6px;
+}
+.cb-disable{
+    -moz-border-radius:0 6px 6px 0;
+    border-radius:0 6px 6px 0;
+}
+.cb-enable.selected, .cb-disable.selected{
+    -moz-border-radius:6px;
+    border-radius:6px;
+}
+.cb-enable span, .cb-disable span { font-size:16px; display: block; background-repeat: no-repeat; font-weight: bold; }
+.cb-enable span,.cb-disable span {padding: 4px 10px; }
+.cb-disable.selected {
+    background: -webkit-gradient(linear, left top, left bottom, from(#bd1a09), to(#e73a28));
+    background: -moz-linear-gradient(top, #bd1a09, #e73a28);
+}
+.cb-enable.selected {
+    background: -webkit-gradient(linear, left top, left bottom, from(#91BD09), to(#b5d25b));
+    background: -moz-linear-gradient(top, #91BD09, #b5d25b);
+}
+.cb-disable.selected span{color: #fff; }
+.cb-enable.selected span {color: #fff; }
+.training-item label { cursor: pointer; }
+.training-item input { display: none; }
+nav{
+    background:#fff;
+    -moz-box-shadow:0 1px 1px 0 rgba(0, 0, 0, 0.1);
+    -webkit-box-shadow:0 1px 0 0 rgba(0, 0, 0, 0.1);
+    box-shadow:0 1px 0 0 rgba(0, 0, 0, 0.1);
+}
+nav ul{
+    list-style-type:none;
+    margin:0;
+    padding:0;
+}
+nav ul li{
+    float:left;
+    border-left:1px solid #F3F3F3;
+}
+nav ul li a{
+    padding:10px 12px 6px 12px;
+    display:block;
+}
+nav ul li.selected a,
+nav ul li a:hover{
+    padding-top:6px;
+    border-top:4px solid #863261;
+    background-color:#f1f1f1;
+}
+nav ul li a:hover{
+    border-top:4px solid #91BD09;
 }
 /*forms*/
-
 button{
     margin:14px 0;
+    text-align:left;
     cursor:pointer;
 	position:relative;
     padding:0;
@@ -43,6 +226,13 @@ button{
     box-shadow:0 1px 5px rgba(0,0,0,.1);
     color:#938945;
 }
+button span{
+    border-bottom:1px solid #808080;
+}
+button small{
+    font-size:11px;
+    display:block;
+}
 input[type=text]{
     font-size:16px;
     width:100%;
@@ -60,20 +250,62 @@ input[type=text]:focus{
     background-color:#f8edf3;
 }
 input[type=submit]{
-    border:none;
-    -webkit-border-radius:7px;
-    -moz-border-radius:7px;
-    border-radius:7px;
-    -moz-box-shadow:0 1px 2px rgba(0, 0, 0, 0.25);
-    -webkit-box-shadow:0 1px 3px rgba(0, 0, 0, 0.25);
-	box-shadow:0 1px 3px rgba(0, 0, 0, 0.25);
-    color:#FFFFFF;
-    font-weight:bold;
-    padding:6px 12px;
-    font-size:16px;
-    line-height:1;
-    text-shadow:0 0 10px rgba(0, 0, 0, 0.25);
-    background:#91BD09;
+    
+}
+
+div.field{
+    padding:0 0 20px 0;
+}
+
+/*
+	Default 5-column, 768 px layout for iPads, netbooks, and IE
+	(All other layouts inherit styles from this layout)
+	-----------------------------------------------------------
+	1      2      3      4      5     
+	120px  264px  408px  552px  696px   (24px gutters)
+*/
+
+body {
+	background: rgb(232,232,232);
+	padding: 60px 36px 0;
+	padding:36px;
+	width: 696px;
+}
+
+/* 
+	2-column, 320 px layout for smartphones
+	---------------------------------------
+	1      2
+	120px  264px   (24px gutters)
+*/
+
+@media only screen and (max-width: 767px) {
+	
+	body {
+		padding: 48px 28px 0;
+		padding:10px;
+		width: 264px;
+	}
+	
+}
+
+
+
+/* 
+	8-column, 1224 px layout for desktops and laptops
+	------------------------------------------------------------------------
+	1      2      3      4      5      6      7      8
+	120px  264px  408px  552px  696px  840px  984px  1128px   (24px gutters)
+*/
+
+@media only screen and (min-width: 1224px) {
+
+    body {
+        padding: 72px 48px 0;
+        padding:20px 48px;
+        width: 1128px;
+    }
+
 }
 /*scaffold stuff*/
 #notice {
@@ -106,4 +338,42 @@ input[type=submit]{
 #error_explanation ul li {
   font-size: 12px;
   list-style: square;
+}
+/* `Clear Floated Elements
+----------------------------------------------------------------------------------------------------*/
+
+/* http://sonspring.com/journal/clearing-floats */
+
+.clear {
+	clear: both;
+	display: block;
+	overflow: hidden;
+	visibility: hidden;
+	width: 0;
+	height: 0;
+}
+
+/* http://perishablepress.com/press/2008/02/05/lessons-learned-concerning-the-clearfix-css-hack */
+
+.clearfix:after {
+	clear: both;
+	content: ' ';
+	display: block;
+	font-size: 0;
+	line-height: 0;
+	visibility: hidden;
+	width: 0;
+	height: 0;
+}
+
+.clearfix {
+	display: inline-block;
+}
+
+* html .clearfix {
+	height: 1%;
+}
+
+.clearfix {
+	display: block;
 }

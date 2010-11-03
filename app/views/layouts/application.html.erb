@@ -5,10 +5,13 @@
     <title>Up To Speed</title>
     <%= stylesheet_link_tag :all %>
     <meta name="viewport" content="initial-scale=1.0, width=device-width, maximum-scale=1.0"/>
-    <%= javascript_include_tag :defaults %>
+    <%= javascript_include_tag "http://ajax.googleapis.com/ajax/libs/jquery/1.4/jquery.min.js" %>
+    <%= javascript_include_tag "rails" %>
     <%= csrf_meta_tag %>
 </head>
 <body>
-    <%= yield %>
+    <div id="container">
+        <%= yield %>
+    </div>
 </body>
 </html>
