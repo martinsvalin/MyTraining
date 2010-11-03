@@ -38,27 +38,20 @@ figure img {width: 100%;}
 	------------------
 */
 
-.gigantic {
-	font-size: 105px;
-	line-height: 120px;
-	letter-spacing: -2px;
-}
-
 .huge, h1 {
-	font-size: 68px;
-	line-height: 72px;
-	letter-spacing: -2px;
-}
-
-.large, h2 {
-	font-size: 42px;
-	line-height: 48px;
+	font-size: 48px;
+	line-height: 64px;
 	letter-spacing: -1px;
 }
 
-.big, h3 {
+.large, h2 {
 	font-size: 26px;
 	line-height: 36px;
+}
+
+.big, h3 {
+	font-size: 16px;
+	line-height: 1.5px;
 }
 
 .normal, body {
@@ -89,13 +82,6 @@ body {
 	padding: 60px 36px 0;
 	width: 696px;
 }
-
-#example {
-	height: 600px;
-	background: rgb(60,97,158);
-}
-
-
 
 /* 
 	2-column, 320 px layout for smartphones

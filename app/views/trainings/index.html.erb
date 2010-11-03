@@ -1,21 +1,31 @@
 <h1>Trainings</h1>
 <button>Tidigare</button>
-<article>
+<section>
 <% @trainings.each do |training| %>
-    <section>
+    <article>
         <header>
             <h1><%= training.title %></h1>
         </header>
+        <% if workout = training.workout_for_person(@current_user) %>
+            <%= button_to "Destroy", workout, :method => :delete%>
+            <span class="done">Done, <%= workout.points %> poäng!</span>
+        <% else %>
+            <%= form_for training.workouts.new(:person => @current_user) do |f| %>
+                <%= f.hidden_field :person_id %>
+                <%= f.hidden_field :training_id %>
+                <%= f.submit %>
+            <% end %>
+        <% end%>
         <span><%= training.location %></span>
-        <time datetime="<%= training.start_time %>"><%= training.start_time %></time>
-        <time datetime="<%= training.end_time %>"><%= training.end_time %></time>
+        <time datetime="<%= training.start_time %>"><%= training.start_time.to_s(:short) %></time>
+        <time datetime="<%= training.end_time %>"><%= training.end_time.to_s(:time) %></time>
         <footer>
             <%= link_to 'Show', training %>
             <%= link_to 'Edit', edit_training_path(training) %>
             <%= link_to 'Destroy', training, :confirm => 'Are you sure?', :method => :delete %>
         </footer>
-    </section>
+    </article>
 <% end %>
-</article>
+</section>
 <button>Senare</button>
 <%= link_to 'New Training', new_training_path %>

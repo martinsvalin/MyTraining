@@ -1,4 +1,6 @@
 class TrainingsController < ApplicationController
+  before_filter :get_current_user
+
   # GET /trainings
   # GET /trainings.xml
   def index
@@ -80,4 +82,9 @@ class TrainingsController < ApplicationController
       format.xml  { head :ok }
     end
   end
+  
+  private
+    def get_current_user
+      @current_user = Person.last || Person.create(:name => 'Test Testsson', :email => 'martin@lite.nu')
+    end
 end

@@ -5,14 +5,17 @@ a{
     color:#938945;
     text-decoration:none;
 }
-section{
+article{
     padding:14px 0 14px;
     border-bottom:1px solid #f1f1f1; 
 }
-section h1{
+article h1{
     color:#863261;
     line-height:36px;
     font-size:26px;
+}
+span.done{
+    color:#91BD09;
 }
 div.field{
     padding:0 0 20px 0;

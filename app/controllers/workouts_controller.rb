@@ -44,26 +44,10 @@ class WorkoutsController < ApplicationController
 
     respond_to do |format|
       if @workout.save
-        format.html { redirect_to(@workout, :notice => 'Workout was successfully created.') }
+        format.html { redirect_to(trainings_path, :notice => 'Workout was successfully created.') }
         format.xml  { render :xml => @workout, :status => :created, :location => @workout }
       else
         format.html { render :action => "new" }
-        format.xml  { render :xml => @workout.errors, :status => :unprocessable_entity }
-      end
-    end
-  end
-
-  # PUT /workouts/1
-  # PUT /workouts/1.xml
-  def update
-    @workout = Workout.find(params[:id])
-
-    respond_to do |format|
-      if @workout.update_attributes(params[:workout])
-        format.html { redirect_to(@workout, :notice => 'Workout was successfully updated.') }
-        format.xml  { head :ok }
-      else
-        format.html { render :action => "edit" }
         format.xml  { render :xml => @workout.errors, :status => :unprocessable_entity }
       end
     end
@@ -76,7 +60,7 @@ class WorkoutsController < ApplicationController
     @workout.destroy
 
     respond_to do |format|
-      format.html { redirect_to(workouts_url) }
+      format.html { redirect_to(trainings_path) }
       format.xml  { head :ok }
     end
   end
