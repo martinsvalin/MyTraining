@@ -4,7 +4,7 @@ class TrainingsController < ApplicationController
   # GET /trainings
   # GET /trainings.xml
   def index
-    @trainings = Training.all
+    @trainings = Training.find(:all,:order => "start_time")
 
     respond_to do |format|
       format.html # index.html.erb
