@@ -6,7 +6,9 @@
 <% @trainings.each do |training| %>
     <article>
         <header class="clearfix">
-            <time class="day" datetime="<%= training.start_time %>"><span>02</span><span>nov</span></time>
+            <time class="day" datetime="<%= training.start_time %>">
+                <span><%= training.start_time.to_s(:day) %></span><span><%= training.start_time.to_s(:month_short) %></span>
+            </time>
             <h1><%= training.start_time.to_s(:short)%></h1>
         </header>
         <div class="training">
