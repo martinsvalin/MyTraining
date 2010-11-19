@@ -15,20 +15,15 @@
         <% if workout = training.workout_for_person(@current_user) %>
             <div class="training-item clearfix">
                 <span class="name"><%= training.title %> <strong><%= workout.points %></strong> poäng </span>
-                <%= link_to(toggle_button(true), workout, :method => :delete, :class => "enable-disable")%>
+                <%= link_to(toggle_button(true), workout, :method => :delete, :class => "enable-disable", "data-status" => "enabled")%>
             </div>
         <% else %>
             <%= form_for training.workouts.new(:person => @current_user) do |f| %>
                 <%= f.hidden_field :person_id %>
                 <%= f.hidden_field :training_id %>
-                <%= f.submit "Deltog" %>
                 <div class="training-item clearfix">
                     <span class="name"><%= training.title %> ... </span>
-                    <a class="enable-disable">
-                        <label class="cb-enable"><span>On</span></label>
-                        <label class="cb-disable selected"><span>Off</span></label>
-                        <input type="checkbox" id="checkbox" class="checkbox" />
-                    </a>
+                    <%= link_to(toggle_button(false), workout, :method => :delete, :class => "enable-disable", "data-status" => "disabled") %>
                 </div>
             <% end %>
         <% end%>
