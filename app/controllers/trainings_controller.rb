@@ -85,6 +85,6 @@ class TrainingsController < ApplicationController
   
   private
     def get_current_user
-      @current_user = Person.last || Person.create(:name => 'Test Testsson', :email => 'martin@lite.nu')
+      @current_user = Person.find(session[:current_user_id])
     end
 end

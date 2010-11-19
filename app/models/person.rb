@@ -1,5 +1,6 @@
 class Person < ActiveRecord::Base
   has_many :workouts
+  has_many :authorizations
   
   def to_s
     name
@@ -9,4 +10,7 @@ class Person < ActiveRecord::Base
     workouts.sum(:points)
   end
   
+  def self.create_from_hash!(hash)
+    create(:name => hash['user_info']['name'])
+  end
 end

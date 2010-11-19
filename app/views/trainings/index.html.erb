@@ -1,4 +1,5 @@
 <h1>Trainings</h1>
+<% if @current_user %><p>Welcome <%= @current_user.name %><%=@current_user.id%></p><% end %>
 <%#= render :partial => "/shared/navigation" %>
 <%= render :partial => "/shared/status" %>
 <!--<button><span>Tidigare</span><small>Läs in föregående vecka</small></button>-->
