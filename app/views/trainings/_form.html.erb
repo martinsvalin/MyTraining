@@ -11,19 +11,19 @@
 <% end %>
 <article>
     <div class="field">
-        <%= f.label :title, "Activity" %><br />
+        <%= f.label :title, "Activity" %>
         <%= f.text_field :title %>
     </div>
     <div class="field">
-        <%= f.label :location, "Location" %><br />
+        <%= f.label :location, "Location" %>
         <%= f.text_field :location %>
     </div>
     <div class="field">
-        <%= f.label :start_date, "Start date" %><br />
+        <%= f.label :start_date, "Start date" %>
         <%= f.text_field :start_date, :type => "date", :class => "datepicker" %>
     </div>
     <div class="field">
-        <%= f.label :start_time, "Start time" %>
+        <%= f.label :start_time, "Start time (hh:mm)" %>
         <%= f.text_field :start_time, :placeholder => 'hh:mm' %>
     </div>
     <div class="field">
@@ -31,7 +31,7 @@
         <%= f.text_field :duration, :type => "number", :min => "10", :max => "300", :step => "5" %>
     </div>
     <div class="actions">
-        <%= f.submit %>
+        <%= f.submit "Save" %>
     </div>
 </article>
 <% end %>

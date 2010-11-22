@@ -1,5 +1,8 @@
-<h1>New training</h1>
+<section>
+    <h1>Add new public training</h1>
+    <%= render 'form' %>
+</section>
+<div id="actions">
+    <%= link_to '« Trainings', trainings_path, :class => "action-button"  %>
+</div>
 
-<%= render 'form' %>
-
-<%= link_to 'Back', trainings_path, :class => "action-button"  %>
