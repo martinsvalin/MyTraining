@@ -1,17 +1,16 @@
-<h1>Trainings</h1>
-<% if @current_user %><p>Welcome <%= @current_user.name %><%=@current_user.id%></p><% end %>
-<%#= render :partial => "/shared/navigation" %>
-<div class="status">
-    <strong><%=@current_user.total_points%></strong> points
+<% if @current_user %>
+<div class="status vcard">
+    <p><span class="fn name"><%= @current_user.name %></span><!--(<%=@current_user.id%>)--><strong class="points"><%=@current_user.total_points%></strong> points</p>
 </div>
+<% end %>
 <!--<button><span>Tidigare</span><small>Läs in föregående vecka</small></button>-->
 <section>
 <% @trainings.each do |training| %>
     <article>
         <header class="clearfix">
-            <time class="day" datetime="<%= training.start_time %>">
-                <span><%= training.start_time.to_s(:day) %></span><span><%= training.start_time.to_s(:month_short) %></span>
-                <%= training.start_time.to_s(:time)%>-<%= training.end_time.to_s(:time)%>
+            <time class="day" datetime="<%= training.start_at %>">
+                <span><%= training.start_at.to_s(:day) %> <%= training.start_at.to_s(:month_short) %></span>
+                <%= training.start_at.to_s(:time)%>-<%= training.end_at.to_s(:time)%>
             </time>
             <h1><%= training.title %></h1>
         </header>
@@ -28,15 +27,10 @@
                 <div class="training-item clearfix">
                     <%= link_to(toggle_button(false), workout, :method => :delete, :class => "enable-disable", "data-status" => "disabled") %>
                 </div>
-            <% end %>
+            <% end %>   
         <% end%>
             <span><%= training.location %></span>
         </div>
-        <!--<footer>
-            <%= link_to 'Show', training %>
-            <%= link_to 'Edit', edit_training_path(training) %>
-            <%= link_to 'Destroy', training, :confirm => 'Are you sure?', :method => :delete %>
-        </footer>-->
     </article>
 <% end %>
 </section>

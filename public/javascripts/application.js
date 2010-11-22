@@ -1,8 +1,5 @@
 // Place your application-specific JavaScript functions and classes here
 // This file is automatically included by javascript_include_tag :defaults
-
-
-
 $(function() {
     $('a.enable-disable').click(function() {
         if($(this).data('status') == 'enabled') {
@@ -14,11 +11,11 @@ $(function() {
             return false;
         }
     });
-    $("#minutes").change(function(){
-        $("#minutes-display").html($(this).val());
-        $("#minutes-slider").slider("value", $(this).val());
+    $("#training_duration").change(function(){
+        $("#training_duration-display").html($(this).val());
+        $("#training_duration-slider").slider("value", $(this).val());
     });
-    $("#minutes").change();
+    $("#training_duration").change();
     
     //datepicker stuff
     $(".datepicker").each(function(){
@@ -31,18 +28,18 @@ $(function() {
         		setTimeout(function(){$(".ui-datepicker").css("z-index", 99);}, 10);
         	}
         });  
-        /*dayNamesMin: I18n.t('js.date.abbr_day_names'),
-    	dateFormat: I18n.t('js.date.format'),
-    	monthNames: I18n.t('js.date.month_names'),*/
     });
     //Slider
+    $('input[type=number]').each(function() {
+       $(this).after('<div id="' + this.id + '-slider" class="slider" data-for="' + this.id + '"></div>');
+    });
     $(".slider").each(function(){
         initSliderFromField(this, $('#' + $(this).data('for')));
     });
-    $("#minutes-slider").bind( "slidechange", function(event, ui){
+    $("#training_duration-slider").bind( "slidechange", function(event, ui){
         var minutes = ui.value;
-        $("#minutes").val(minutes);
-        $("#minutes-display").html(minutes);
+        $("#training_duration").val(minutes);
+        $("#training_duration-display").html(minutes);
     });
 });
 
@@ -52,10 +49,13 @@ function initSliderFromField(slider_element, input) {
     var step = parseInt(input.attr('step'));
     var value = parseInt(input.attr('value'));
 
+
     $(slider_element).slider({
         min:min,
         max:max,
         step:step,
         value:value,
     });
+    
+    input.hide();
 }

@@ -1,10 +1,11 @@
 class TrainingsController < ApplicationController
   before_filter :current_user_or_redirect_to_login
-
+  before_filter :assign_start_at, :assign_end_at, :only => [:create,:update]
+  
   # GET /trainings
   # GET /trainings.xml
   def index
-    @trainings = Training.find(:all,:order => "start_time")
+    @trainings = Training.find(:all,:order => "start_at")
 
     respond_to do |format|
       format.html # index.html.erb
@@ -42,6 +43,7 @@ class TrainingsController < ApplicationController
   # POST /trainings
   # POST /trainings.xml
   def create
+    
     @training = Training.new(params[:training])
 
     respond_to do |format|
@@ -82,4 +84,17 @@ class TrainingsController < ApplicationController
       format.xml  { head :ok }
     end
   end
+
+  private
+  def assign_start_at
+    params[:training][:start_at] = Time.zone.parse "#{params[:training][:start_date]} #{params[:training][:start_time]}"
+    params[:training].delete(:start_date)
+    params[:training].delete(:start_time)
+  end
+  
+  def assign_end_at
+    params[:training][:end_at] = params[:training][:start_at] + params[:training][:duration].to_i.minutes
+    params[:training].delete(:duration)
+  end
+  
 end
