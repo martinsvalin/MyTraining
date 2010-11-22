@@ -1,5 +1,5 @@
 class TrainingsController < ApplicationController
-  before_filter :current_user_or_login
+  before_filter :current_user_or_redirect_to_login
 
   # GET /trainings
   # GET /trainings.xml
