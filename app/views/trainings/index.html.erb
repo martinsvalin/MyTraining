@@ -1,7 +1,9 @@
 <h1>Trainings</h1>
 <% if @current_user %><p>Welcome <%= @current_user.name %><%=@current_user.id%></p><% end %>
 <%#= render :partial => "/shared/navigation" %>
-<%= render :partial => "/shared/status" %>
+<div class="status">
+    <strong><%=@current_user.total_points%></strong> points
+</div>
 <!--<button><span>Tidigare</span><small>Läs in föregående vecka</small></button>-->
 <section>
 <% @trainings.each do |training| %>

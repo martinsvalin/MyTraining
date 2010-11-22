@@ -8,7 +8,6 @@ class SessionsController < ApplicationController
     end
     # Log the authorizing user in.
     self.current_user = @auth.person
-    # render :text => "Welcome, #{current_user.name}"
-    redirect_to(session[:callback_uri])
+    redirect_to_callback_url
   end
 end
