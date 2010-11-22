@@ -30,6 +30,10 @@
         <label>Training duration (<span id="training_duration-display"></span> minutes)</label>
         <%= f.text_field :duration, :type => "number", :min => "10", :max => "300", :step => "5" %>
     </div>
+    <div class="field">
+        <label>Points (<span id="training_default_points-display"></span> points)</label>
+        <%= f.text_field :default_points, :type => "number", :min => "10", :max => "25000", :step => "50" %>
+    </div>
     <div class="actions">
         <%= f.submit "Save" %>
     </div>

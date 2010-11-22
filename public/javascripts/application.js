@@ -16,6 +16,11 @@ $(function() {
         $("#training_duration-slider").slider("value", $(this).val());
     });
     $("#training_duration").change();
+    $("#training_default_points").change(function(){
+        $("#training_default_points-display").html($(this).val());
+        $("#training_default_points-slider").slider("value", $(this).val());
+    });
+    $("#training_default_points").change();
     
     //datepicker stuff
     $(".datepicker").each(function(){
@@ -40,6 +45,11 @@ $(function() {
         var minutes = ui.value;
         $("#training_duration").val(minutes);
         $("#training_duration-display").html(minutes);
+    });
+    $("#training_default_points-slider").bind( "slidechange", function(event, ui){
+        var points = ui.value;
+        $("#training_default_points").val(points);
+        $("#training_default_points-display").html(points);
     });
 });
 
