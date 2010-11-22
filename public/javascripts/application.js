@@ -12,4 +12,8 @@ $(function() {
             return false;
         }
     });
+    $("#minutes").change(function(){
+        $("#minutes-display").html($(this).val()); 
+    });
+    $("#minutes").change();    
 });
