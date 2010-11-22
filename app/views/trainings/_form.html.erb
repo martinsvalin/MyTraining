@@ -18,9 +18,9 @@
     <input type="date" class="datepicker">
     <label>time</label>
     <input type="time">
-    <label>Längd <span id="minutes-display">()</span></label>
-    <input type="range" id="minutes" min="10" step="5" value="60" max="300">
-    <div class="slider"></div>
+    <label>Längd (<span id="minutes-display"></span>)</label>
+    <input type="number" id="minutes" min="10" max="300" step="5" value="60">
+    <div id="minutes-slider" class="slider" data-for="minutes"></div>
   </div>
   <div class="field">
     <%= f.label :end_time %><br />

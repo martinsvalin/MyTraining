@@ -15,7 +15,8 @@ $(function() {
         }
     });
     $("#minutes").change(function(){
-        $("#minutes-display").html($(this).val()); 
+        $("#minutes-display").html($(this).val());
+        $("#minutes-slider").slider("value", $(this).val());
     });
     $("#minutes").change();
     
@@ -36,15 +37,25 @@ $(function() {
     });
     //Slider
     $(".slider").each(function(){
-        console.log("init slider");
-        $(this).slider({
-            min:10,
-            max:300,
-            step:5,
-            value:60,
-        });
+        initSliderFromField(this, $('#' + $(this).data('for')));
     });
-    $(".slider").bind( "slidechange", function(event, ui){
-      $("#minutes-display").html(ui.value);
+    $("#minutes-slider").bind( "slidechange", function(event, ui){
+        var minutes = ui.value;
+        $("#minutes").val(minutes);
+        $("#minutes-display").html(minutes);
     });
 });
+
+function initSliderFromField(slider_element, input) {
+    var min = parseInt(input.attr('min'));
+    var max = parseInt(input.attr('max'));
+    var step = parseInt(input.attr('step'));
+    var value = parseInt(input.attr('value'));
+
+    $(slider_element).slider({
+        min:min,
+        max:max,
+        step:step,
+        value:value,
+    });
+}
