@@ -85,12 +85,11 @@ section{
     margin-bottom:40px;
 }
 article header h1{
-    float:left;
+    /*float:left;*/
     color:#863261;
-    line-height:24px;
     font-size:22px;    
 }
-article header time.day{
+/*article header time.day{
     float:left;
     text-align:center;
     display:inline-block;
@@ -102,6 +101,9 @@ article header time.day{
     line-height:24px;
     -moz-border-radius:4px;
     margin-right:24px;
+}*/
+article header time.day{
+    display:block;
 }
 header time.day span:first-child{
     color:#91bd09;
@@ -116,8 +118,8 @@ header time.day span:last-child{
     display:block;
 }
 div.training{
-    margin-top:-40px;
-    margin-left:72px;
+    /*margin-top:-40px;*/
+    /*margin-left:72px;*/
 }
 span.done{
     margin-top:-4px;
@@ -290,6 +292,10 @@ body {
 		padding: 48px 28px 0;
 		padding:14px;
 		width: 292px;
+		font-size:13px;
+	}
+	article header h1{
+	    font-size:16px;
 	}
 	
 }

@@ -9,13 +9,14 @@
         <header class="clearfix">
             <time class="day" datetime="<%= training.start_time %>">
                 <span><%= training.start_time.to_s(:day) %></span><span><%= training.start_time.to_s(:month_short) %></span>
+                <%= training.start_time.to_s(:time)%>-<%= training.end_time.to_s(:time)%>
             </time>
-            <h1><%= training.start_time.to_s(:short)%></h1>
+            <h1><%= training.title %></h1>
         </header>
         <div class="training">
         <% if workout = training.workout_for_person(@current_user) %>
             <div class="training-item clearfix">
-                <span class="name"><%= training.title %> <strong><%= workout.points %></strong> poäng </span>
+                <span class="name"><strong><%= workout.points %></strong> poäng </span>
                 <%= link_to(toggle_button(true), workout, :method => :delete, :class => "enable-disable", "data-status" => "enabled")%>
             </div>
         <% else %>
@@ -23,16 +24,11 @@
                 <%= f.hidden_field :person_id %>
                 <%= f.hidden_field :training_id %>
                 <div class="training-item clearfix">
-                    <span class="name"><%= training.title %> ... </span>
                     <%= link_to(toggle_button(false), workout, :method => :delete, :class => "enable-disable", "data-status" => "disabled") %>
                 </div>
             <% end %>
         <% end%>
             <span><%= training.location %></span>
-            <small>
-                <time datetime="<%= training.start_time %>"><%= training.start_time.to_s(:short) %></time>
-                <time datetime="<%= training.end_time %>"><%= training.end_time.to_s(:time) %></time>
-            </small>
         </div>
         <!--<footer>
             <%= link_to 'Show', training %>
