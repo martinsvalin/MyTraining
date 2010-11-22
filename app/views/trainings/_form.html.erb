@@ -15,11 +15,12 @@
     <%= f.label :start_time %><br />
     <!--<%= f.datetime_select :start_time %>-->
     <label>date</label>
-    <input type="date">
+    <input type="date" class="datepicker">
     <label>time</label>
     <input type="time">
     <label>Längd <span id="minutes-display">()</span></label>
     <input type="range" id="minutes" min="10" step="5" value="60" max="300">
+    <div class="slider"></div>
   </div>
   <div class="field">
     <%= f.label :end_time %><br />
