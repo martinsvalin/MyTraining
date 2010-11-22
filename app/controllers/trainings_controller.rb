@@ -48,7 +48,7 @@ class TrainingsController < ApplicationController
 
     respond_to do |format|
       if @training.save
-        format.html { redirect_to(@training, :notice => 'Training was successfully created.') }
+        format.html { redirect_to(trainings_path, :notice => 'Training was successfully created.') }
         format.xml  { render :xml => @training, :status => :created, :location => @training }
       else
         format.html { render :action => "new" }
@@ -64,7 +64,7 @@ class TrainingsController < ApplicationController
 
     respond_to do |format|
       if @training.update_attributes(params[:training])
-        format.html { redirect_to(@training, :notice => 'Training was successfully updated.') }
+        format.html { redirect_to(trainings_path, :notice => 'Training was successfully updated.') }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }

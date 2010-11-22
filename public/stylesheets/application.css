@@ -190,6 +190,7 @@ button small{
 }
 input[type=text],
 input[type=date]{
+    width:684px;
     font-size:16px;
     border:solid 1px #bcbbbb;
     padding:5px;
@@ -209,6 +210,7 @@ input[type=submit]{
     
 }
 a.action-button{
+    display:inline-block;
     background-color:#003333;
     -moz-border-radius:4px;
     -webkit-border-radius:4px;
@@ -216,6 +218,7 @@ a.action-button{
     color:#fff;
     padding:10px 10px;
     text-shadow:0 2px 1px rgba(0,102,102,0.8);
+    margin-right:10px;
 }
 div.field{
     padding:0 0 20px 0;
@@ -228,9 +231,10 @@ div.field{
 	1      2      3      4      5     
 	120px  264px  408px  552px  696px   (24px gutters)
 */
-
-body {
-	background: rgb(232,232,232);
+body{
+    background: rgb(232,232,232);
+}
+body #container {
 	padding: 60px 36px 0;
 	padding:36px;
 	width: 696px;
@@ -245,7 +249,7 @@ body {
 
 @media only screen and (max-width: 767px) {
 	
-	body {
+	body #container {
 		padding:10px 5px;
 		width: 300px;
 		font-size:13px;
@@ -253,6 +257,10 @@ body {
 	input[type=text],
     input[type=date]{
         width:288px;
+    }
+    #notice{
+        margin:0 auto;
+        width:280px;
     }
 }
 
@@ -267,17 +275,22 @@ body {
 
 @media only screen and (min-width: 1224px) {
 
-    body {
+    body #container {
         padding: 72px 48px 0;
         padding:20px 48px;
         width: 1128px;
     }
 
 }
+#messages{
+    color:#693;
+	background:#e9f0e0;
+	border:1px solid #d2dfc0;
+}
 /*scaffold stuff*/
+
 #notice {
-    padding:12px;
-    color: green;
+    padding:5px;
 }
 .field_with_errors {
   padding: 2px;
