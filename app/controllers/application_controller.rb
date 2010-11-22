@@ -17,4 +17,8 @@ class ApplicationController < ActionController::Base
     @current_user = person
     session[:person_id] = person.id
   end
+  
+  def current_user_or_login
+    current_user || redirect_to("/auth/google_apps")
+  end
 end

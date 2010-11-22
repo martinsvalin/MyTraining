@@ -1,6 +1,6 @@
 class Person < ActiveRecord::Base
   has_many :workouts
-  has_many :authorizations
+  has_many :authorizations, :dependent => :destroy
   
   def to_s
     name
@@ -11,6 +11,6 @@ class Person < ActiveRecord::Base
   end
   
   def self.create_from_hash!(hash)
-    create(:name => hash['user_info']['name'])
+    create(:name => hash['user_info']['name'], :email => hash['user_info']['email'])
   end
 end

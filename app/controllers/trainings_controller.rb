@@ -1,5 +1,5 @@
 class TrainingsController < ApplicationController
-  before_filter :get_current_user
+  before_filter :current_user_or_login
 
   # GET /trainings
   # GET /trainings.xml
@@ -82,9 +82,4 @@ class TrainingsController < ApplicationController
       format.xml  { head :ok }
     end
   end
-  
-  private
-    def get_current_user
-      @current_user = Person.find(session[:current_user_id])
-    end
 end
