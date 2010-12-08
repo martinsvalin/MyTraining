@@ -1,6 +1,8 @@
 class Training < ActiveRecord::Base
   has_many :workouts
   
+  scope :in_week, lambda {|date| where(:start_at => date.beginning_of_week..date.end_of_week) }
+  
   def to_s
     title
   end

@@ -1,5 +1,10 @@
 <!--<button><span>Tidigare</span><small>Läs in föregående vecka</small></button>-->
 <section>
+    <nav>
+        <%= link_to "Förra veckan", trainings_path(:week => (@date - 7.days).cweek), :class => "previous" %>
+        <span class="this-week">Vecka <%= @date.cweek %></span>
+        <%= link_to "Nästa vecka", trainings_path(:week => (@date + 7.days).cweek), :class => "next" %>
+    </nav>
 <% @trainings.each do |training| %>
     <article>
         <header class="clearfix">
