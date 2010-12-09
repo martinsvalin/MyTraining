@@ -1,7 +1,7 @@
 class Training < ActiveRecord::Base
   has_many :workouts, :dependent => :destroy
   
-  scope :in_week, lambda {|week_number| Training.date_from_week(week_number) }
+  scope :in_week, lambda {|week_number| Training.where_start_at_in_week(week_number) }
   
   def to_s
     title
@@ -27,7 +27,7 @@ class Training < ActiveRecord::Base
     end
   end
   
-  def self.date_from_week(week_number)
+  def self.where_start_at_in_week(week_number)
     date = Date.from_week_within_six_months(week_number)
     where(:start_at => date.beginning_of_week..date.end_of_week)
   end
