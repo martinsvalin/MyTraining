@@ -1,9 +1,9 @@
 <!--<button><span>Tidigare</span><small>Läs in föregående vecka</small></button>-->
 <section>
-    <nav>
-        <%= link_to "« v.#{previous_week}", trainings_path(:week => previous_week), :class => "previous" %>
-        <span class="this-week">Vecka <%= this_week %></span>
-        <%= link_to "v.#{next_week} »", trainings_path(:week => next_week), :class => "next" %>
+    <nav class="weeks">
+        <%= link_to "v.#{previous_week}", trainings_path(:week => previous_week), :class => "previous big" %>
+        <span class="this-week large">Vecka <%= this_week %></span>
+        <%= link_to "v.#{next_week}", trainings_path(:week => next_week), :class => "next big" %>
     </nav>
 <% @trainings.each do |training| %>
     <article>

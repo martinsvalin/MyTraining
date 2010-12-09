@@ -96,6 +96,17 @@ div.actions{
     margin-left:10px;
     margin-top:20px;
 }
+/*Navigation between weeks*/
+nav.weeks{ 
+    text-align: center;
+    border-bottom: 1px solid #EDEBDA;
+}
+nav.weeks .previous:before{ content: "« ";}
+nav.weeks .next:after{ content: " »";}
+nav.weeks .this-week{ 
+    padding: 0 30px;
+}
+
 /*Date time area in list*/
 article header time.day{
     float:left;
