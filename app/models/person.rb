@@ -1,5 +1,6 @@
 class Person < ActiveRecord::Base
   has_many :workouts
+  has_many :trainings
   has_many :authorizations, :dependent => :destroy
   
   def to_s

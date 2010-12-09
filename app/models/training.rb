@@ -1,5 +1,6 @@
 class Training < ActiveRecord::Base
   has_many :workouts, :dependent => :destroy
+  belongs_to :person
   
   scope :in_week, lambda {|week_number| Training.where_start_at_in_week(week_number) }
   
