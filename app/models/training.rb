@@ -1,5 +1,5 @@
 class Training < ActiveRecord::Base
-  has_many :workouts
+  has_many :workouts, :dependent => :destroy
   
   scope :in_week, lambda {|week_number| Training.date_from_week(week_number) }
   
