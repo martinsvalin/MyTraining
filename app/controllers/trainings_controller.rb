@@ -5,8 +5,8 @@ class TrainingsController < ApplicationController
   # GET /trainings
   # GET /trainings.xml
   def index
-    @date = (params[:week] ? Date.commercial(2010, params[:week].to_i, 1) : Date.today)
-    @trainings = Training.in_week(@date).order("start_at")
+    @week = params[:week].try(:to_i) || Date.today.cweek
+    @trainings = Training.in_week(@week).order("start_at")
 
     respond_to do |format|
       format.html # index.html.erb
