@@ -4,6 +4,11 @@ class Training < ActiveRecord::Base
   
   scope :in_week, lambda {|week_number| Training.where_start_at_in_week(week_number) }
   
+  def self.where_start_at_in_week(week_number)
+    date = Date.from_week_within_six_months(week_number)
+    where(:start_at => date.beginning_of_week..date.end_of_week)
+  end
+  
   def to_s
     title
   end
@@ -28,8 +33,18 @@ class Training < ActiveRecord::Base
     end
   end
   
-  def self.where_start_at_in_week(week_number)
-    date = Date.from_week_within_six_months(week_number)
-    where(:start_at => date.beginning_of_week..date.end_of_week)
+  def individual_training?
+    person.present?
+  end
+  
+  def recalculate_points_for_workouts
+    if individual_training?
+      set_points_for_workouts (workouts.count >= 5 ? default_points * 5 : default_points)
+    end
+  end
+
+  private
+  def set_points_for_workouts(points)
+    workouts(:conditions => ["points != ?", points]).map {|workout| workout.update_attribute :points, points}
   end
 end
