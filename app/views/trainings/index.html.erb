@@ -1,12 +1,11 @@
-<!--<button><span>Tidigare</span><small>Läs in föregående vecka</small></button>-->
-<section>
+<section id="trainings">
     <nav class="weeks">
         <%= link_to "v.#{previous_week}", trainings_path(:week => previous_week), :class => "previous big" %>
         <span class="this-week large">Vecka <%= this_week %></span>
         <%= link_to "v.#{next_week}", trainings_path(:week => next_week), :class => "next big" %>
     </nav>
 <% @trainings.each do |training| %>
-    <article>
+    <article class="<%= training_article_class(training) %>">
         <header class="clearfix">
             <time class="day" datetime="<%= training.start_at %>">
                 <span><%= training.start_at.to_s(:day) %> <%= training.start_at.to_s(:month_short) %></span>
@@ -36,7 +35,6 @@
     </article>
 <% end %>
 </section>
-<!--<button>Senare</button>-->
 <div class="actions">
-    <%= link_to 'Add', new_training_path, :class => "action-button" %>
+    <%= link_to 'Lägg till', new_training_path, :class => "action-button" %>
 </div>
