@@ -28,7 +28,7 @@ class TrainingsController < ApplicationController
   # GET /trainings/new
   # GET /trainings/new.xml
   def new
-    @training = Training.new
+    @training = @current_user.trainings.new
 
     respond_to do |format|
       format.html # new.html.erb
@@ -38,14 +38,14 @@ class TrainingsController < ApplicationController
 
   # GET /trainings/1/edit
   def edit
-    @training = Training.find(params[:id])
+    @training = @current_user.trainings.find(params[:id])
   end
 
   # POST /trainings
   # POST /trainings.xml
   def create
     
-    @training = Training.new(params[:training])
+    @training = @current_user.trainings.new(params[:training])
 
     respond_to do |format|
       if @training.save
@@ -61,7 +61,7 @@ class TrainingsController < ApplicationController
   # PUT /trainings/1
   # PUT /trainings/1.xml
   def update
-    @training = Training.find(params[:id])
+    @training = @current_user.trainings.find(params[:id])
 
     respond_to do |format|
       if @training.update_attributes(params[:training])
@@ -77,7 +77,7 @@ class TrainingsController < ApplicationController
   # DELETE /trainings/1
   # DELETE /trainings/1.xml
   def destroy
-    @training = Training.find(params[:id])
+    @training = @current_user.trainings.find(params[:id])
     @training.destroy
 
     respond_to do |format|
