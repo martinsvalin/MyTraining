@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe Date do
   before(:each) do
-    Date.stub(:today).and_return(Date.parse("Feb 10, 2011"))
+    Date.stubs(:today).returns(Date.parse("Feb 10, 2011"))
     @today = Date.today
     @week_today = 6
     @year_today = 2011
