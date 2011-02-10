@@ -2,7 +2,9 @@ class Person < ActiveRecord::Base
   has_many :workouts
   has_many :trainings
   has_many :authorizations, :dependent => :destroy
-  
+
+  validates_presence_of :name
+
   def to_s
     name
   end
