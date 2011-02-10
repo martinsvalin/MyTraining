@@ -19,7 +19,7 @@ class ApplicationController < ActionController::Base
   end
   
   def current_user_or_redirect_to_login
-    current_user || (session[:callback_uri] = request.request_uri) && redirect_to("/auth/google_apps")
+    current_user || (session[:callback_uri] = request.fullpath) && redirect_to("/auth/google_apps")
   end
   
   def redirect_to_callback_url
