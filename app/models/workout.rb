@@ -6,10 +6,10 @@ class Workout < ActiveRecord::Base
 
   before_validation :set_points, :on => :create
   validates_numericality_of :points
-  validates_presence_of :training
+  validates_presence_of :training, :person
 
   def set_points
-    self.points = training.default_points
+    self.points = points || training.default_points
   end
   
   def recalculate_points
