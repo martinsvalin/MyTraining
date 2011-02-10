@@ -1,7 +1,7 @@
 <section id="trainings">
     <nav class="weeks">
         <%= link_to "v.#{previous_week}", trainings_path(:week => previous_week), :class => "previous big" %>
-        <span class="this-week large">Vecka <%= this_week %></span>
+        <span class="this-week large">Vecka <%= @week %></span>
         <%= link_to "v.#{next_week}", trainings_path(:week => next_week), :class => "next big" %>
     </nav>
 <% @trainings.each do |training| %>
