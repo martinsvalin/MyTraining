@@ -1,15 +1,16 @@
 require 'spec_helper'
 
 describe "trainings/edit.html.erb" do
-  before(:each) do
-    @training = assign(:training, stub_model(Training,
-      :new_record? => false,
-      :title => "MyString",
-      :location => "MyString"
-    ))
-  end
+  # before(:each) do
+  #   @training = assign(:training, stub_model(Training,
+  #     :new_record? => false,
+  #     :title => "MyString",
+  #     :location => "MyString"
+  #   ))
+  # end
 
   it "renders the edit training form" do
+    pending
     render
 
     # Run the generator again with the --webrat-matchers flag if you want to use webrat matchers
