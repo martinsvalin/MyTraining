@@ -80,49 +80,6 @@ describe WorkoutsController do
 
   end
 
-  describe "PUT update" do
-
-    describe "with valid params" do
-      it "updates the requested workout" do
-        pending
-        Workout.should_receive(:find).with("37") { mock_workout }
-        mock_workout.should_receive(:update_attributes).with({'these' => 'params'})
-        put :update, :id => "37", :workout => {'these' => 'params'}
-      end
-
-      it "assigns the requested workout as @workout" do
-        pending
-        Workout.stub(:find) { mock_workout(:update_attributes => true) }
-        put :update, :id => "1"
-        assigns(:workout).should be(mock_workout)
-      end
-
-      it "redirects to the workout" do
-        pending
-        Workout.stub(:find) { mock_workout(:update_attributes => true) }
-        put :update, :id => "1"
-        response.should redirect_to(workout_url(mock_workout))
-      end
-    end
-
-    describe "with invalid params" do
-      it "assigns the workout as @workout" do
-        pending
-        Workout.stub(:find) { mock_workout(:update_attributes => false) }
-        put :update, :id => "1"
-        assigns(:workout).should be(mock_workout)
-      end
-
-      it "re-renders the 'edit' template" do
-        pending
-        Workout.stub(:find) { mock_workout(:update_attributes => false) }
-        put :update, :id => "1"
-        response.should render_template("edit")
-      end
-    end
-
-  end
-
   describe "DELETE destroy" do
     it "destroys the requested workout" do
       pending

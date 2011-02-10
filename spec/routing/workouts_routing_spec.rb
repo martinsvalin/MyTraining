@@ -23,10 +23,6 @@ describe WorkoutsController do
       { :post => "/workouts" }.should route_to(:controller => "workouts", :action => "create")
     end
 
-    it "recognizes and generates #update" do
-      { :put => "/workouts/1" }.should route_to(:controller => "workouts", :action => "update", :id => "1")
-    end
-
     it "recognizes and generates #destroy" do
       { :delete => "/workouts/1" }.should route_to(:controller => "workouts", :action => "destroy", :id => "1")
     end
