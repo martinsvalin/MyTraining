@@ -2,6 +2,18 @@ require 'spec_helper'
 
 describe Training do
   describe "validations" do
+    it "should have a title" do
+      Factory.build(:training, :title => nil).should be_invalid
+    end
+
+    it "should have a start_at datetime" do
+      Factory.build(:training, :start_at => nil).should be_invalid
+    end
+
+    it "should have a end_at datetime" do
+      Factory.build(:training, :end_at => nil).should be_invalid
+    end
+
     it "should have a number as default_points" do
       Factory.build(:training, :default_points => "abc").should be_invalid
     end

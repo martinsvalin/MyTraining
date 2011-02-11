@@ -3,6 +3,7 @@ class Training < ActiveRecord::Base
   belongs_to :person
 
   validates_numericality_of :default_points
+  validates_presence_of :title, :start_at, :end_at
 
   scope :in_week, lambda {|week_number| Training.where_start_at_in_week(week_number) }
   default_scope order(:start_at)
