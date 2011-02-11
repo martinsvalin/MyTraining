@@ -5,6 +5,7 @@ class Training < ActiveRecord::Base
   validates_numericality_of :default_points
 
   scope :in_week, lambda {|week_number| Training.where_start_at_in_week(week_number) }
+  default_scope order(:start_at)
 
   def self.where_start_at_in_week(week_number)
     date = Date.from_week_within_six_months(week_number)
