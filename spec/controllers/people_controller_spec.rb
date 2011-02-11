@@ -1,77 +1,62 @@
 require 'spec_helper'
 
 describe PeopleController do
-  def mock_person(stubs={})
-    (@mock_person ||= mock_model(Person).as_null_object).tap do |person|
-      person.stub(stubs) unless stubs.empty?
-    end
+  before(:all) do
+    @person = Person.new
   end
 
   describe "GET index" do
     it "assigns all people as @people" do
-      pending
-      Person.stub(:all) { [mock_person] }
+      Person.expects(:all).returns [@person]
       get :index
-      assigns(:people).should eq([mock_person])
+      assigns(:people).should == [@person]
     end
   end
 
   describe "GET show" do
     it "assigns the requested person as @person" do
-      pending
-      Person.stub(:find).with("37") { mock_person }
+      Person.expects(:find).with("37").returns @person
       get :show, :id => "37"
-      assigns(:person).should be(mock_person)
+      assigns(:person).should be @person
     end
   end
 
   describe "GET new" do
     it "assigns a new person as @person" do
-      pending
-      Person.stub(:new) { mock_person }
+      Person.expects(:new).returns @person
       get :new
-      assigns(:person).should be(mock_person)
+      assigns(:person).should be @person
     end
   end
 
   describe "GET edit" do
     it "assigns the requested person as @person" do
-      pending
-      Person.stub(:find).with("37") { mock_person }
+      Person.expects(:find).with("37").returns @person
       get :edit, :id => "37"
-      assigns(:person).should be(mock_person)
+      assigns(:person).should be @person
     end
   end
 
   describe "POST create" do
+    it "assigns a newly created person as @person" do
+      Person.expects(:new).with({'name' => 'Alfred'}).returns @person
+      post :create, :person => {'name' => 'Alfred'}
+      assigns(:person).should be @person
+    end
 
     describe "with valid params" do
-      it "assigns a newly created person as @person" do
-        pending
-        Person.stub(:new).with({'these' => 'params'}) { mock_person(:save => true) }
-        post :create, :person => {'these' => 'params'}
-        assigns(:person).should be(mock_person)
-      end
-
       it "redirects to the created person" do
-        pending
-        Person.stub(:new) { mock_person(:save => true) }
+        person = Factory.create :person
+        Person.expects(:new).returns person
         post :create, :person => {}
-        response.should redirect_to(person_url(mock_person))
+        response.should redirect_to(person_url person)
       end
     end
 
     describe "with invalid params" do
-      it "assigns a newly created but unsaved person as @person" do
-        pending
-        Person.stub(:new).with({'these' => 'params'}) { mock_person(:save => false) }
-        post :create, :person => {'these' => 'params'}
-        assigns(:person).should be(mock_person)
-      end
-
       it "re-renders the 'new' template" do
-        pending
-        Person.stub(:new) { mock_person(:save => false) }
+        Person.expects(:new).returns @person
+        @person.expects(:save).returns(false)
         post :create, :person => {}
         response.should render_template("new")
       end
@@ -80,41 +65,32 @@ describe PeopleController do
   end
 
   describe "PUT update" do
+    it "assigns the requested person as @person" do
+      Person.expects(:find).returns @person
+      @person.expects(:update_attributes).returns true
+      put :update, :id => "1"
+      assigns(:person).should be @person
+    end
 
     describe "with valid params" do
       it "updates the requested person" do
-        pending
-        Person.should_receive(:find).with("37") { mock_person }
-        mock_person.should_receive(:update_attributes).with({'these' => 'params'})
-        put :update, :id => "37", :person => {'these' => 'params'}
-      end
-
-      it "assigns the requested person as @person" do
-        pending
-        Person.stub(:find) { mock_person(:update_attributes => true) }
-        put :update, :id => "1"
-        assigns(:person).should be(mock_person)
+        Person.expects(:find).with('37').returns @person
+        @person.expects(:update_attributes).with({'name' => 'Albert'})
+        put :update, :id => "37", :person => {'name' => 'Albert'}
       end
 
       it "redirects to the person" do
-        pending
-        Person.stub(:find) { mock_person(:update_attributes => true) }
+        person = Factory.create :person
+        Person.expects(:find).returns person
         put :update, :id => "1"
-        response.should redirect_to(person_url(mock_person))
+        response.should redirect_to(person_url person)
       end
     end
 
     describe "with invalid params" do
-      it "assigns the person as @person" do
-        pending
-        Person.stub(:find) { mock_person(:update_attributes => false) }
-        put :update, :id => "1"
-        assigns(:person).should be(mock_person)
-      end
-
       it "re-renders the 'edit' template" do
-        pending
-        Person.stub(:find) { mock_person(:update_attributes => false) }
+        Person.expects(:find).returns @person
+        @person.expects(:update_attributes).returns false
         put :update, :id => "1"
         response.should render_template("edit")
       end
@@ -124,18 +100,15 @@ describe PeopleController do
 
   describe "DELETE destroy" do
     it "destroys the requested person" do
-      pending
-      Person.should_receive(:find).with("37") { mock_person }
-      mock_person.should_receive(:destroy)
+      Person.expects(:find).with('37').returns @person
+      @person.expects :destroy
       delete :destroy, :id => "37"
     end
 
     it "redirects to the people list" do
-      pending
-      Person.stub(:find) { mock_person }
+      Person.expects(:find).returns @person
       delete :destroy, :id => "1"
       response.should redirect_to(people_url)
     end
   end
-
 end
