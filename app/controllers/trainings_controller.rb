@@ -14,17 +14,6 @@ class TrainingsController < ApplicationController
     end
   end
 
-  # GET /trainings/1
-  # GET /trainings/1.xml
-  def show
-    @training = Training.find(params[:id])
-
-    respond_to do |format|
-      format.html # show.html.erb
-      format.xml  { render :xml => @training }
-    end
-  end
-
   # GET /trainings/new
   # GET /trainings/new.xml
   def new
@@ -44,7 +33,6 @@ class TrainingsController < ApplicationController
   # POST /trainings
   # POST /trainings.xml
   def create
-    
     @training = current_user.trainings.new(params[:training])
 
     respond_to do |format|

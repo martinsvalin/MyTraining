@@ -3,7 +3,7 @@ Mytraining::Application.routes.draw do
 
   resources :workouts, :except => [:update]
 
-  resources :trainings
+  resources :trainings, :except => [:show]
 
   resources :people
 

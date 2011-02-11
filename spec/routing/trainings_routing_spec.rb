@@ -11,10 +11,6 @@ describe TrainingsController do
       { :get => "/trainings/new" }.should route_to(:controller => "trainings", :action => "new")
     end
 
-    it "recognizes and generates #show" do
-      { :get => "/trainings/1" }.should route_to(:controller => "trainings", :action => "show", :id => "1")
-    end
-
     it "recognizes and generates #edit" do
       { :get => "/trainings/1/edit" }.should route_to(:controller => "trainings", :action => "edit", :id => "1")
     end
