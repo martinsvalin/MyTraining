@@ -9,7 +9,7 @@ class WorkoutsController < ApplicationController
         format.html { redirect_to(trainings_path, :notice => "Workout saved") }
         format.xml  { render :xml => @workout, :status => :created }
       else
-        format.html { redirect_to(trainings_path, :warning => "Workout could not be saved") }
+        format.html { redirect_to(trainings_path, :alert => "Workout could not be saved") }
         format.xml  { render :xml => @workout.errors, :status => :unprocessable_entity }
       end
     end
