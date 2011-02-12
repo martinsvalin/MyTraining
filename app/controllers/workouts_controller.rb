@@ -1,42 +1,4 @@
 class WorkoutsController < ApplicationController
-  # GET /workouts
-  # GET /workouts.xml
-  def index
-    @workouts = Workout.all
-
-    respond_to do |format|
-      format.html # index.html.erb
-      format.xml  { render :xml => @workouts }
-    end
-  end
-
-  # GET /workouts/1
-  # GET /workouts/1.xml
-  def show
-    @workout = Workout.find(params[:id])
-
-    respond_to do |format|
-      format.html # show.html.erb
-      format.xml  { render :xml => @workout }
-    end
-  end
-
-  # GET /workouts/new
-  # GET /workouts/new.xml
-  def new
-    @workout = Workout.new
-
-    respond_to do |format|
-      format.html # new.html.erb
-      format.xml  { render :xml => @workout }
-    end
-  end
-
-  # GET /workouts/1/edit
-  def edit
-    @workout = Workout.find(params[:id])
-  end
-
   # POST /workouts
   # POST /workouts.xml
   def create
@@ -44,10 +6,10 @@ class WorkoutsController < ApplicationController
 
     respond_to do |format|
       if @workout.save
-        format.html { redirect_to(trainings_path) }
-        format.xml  { render :xml => @workout, :status => :created, :location => @workout }
+        format.html { redirect_to(trainings_path, :notice => "Workout saved") }
+        format.xml  { render :xml => @workout, :status => :created }
       else
-        format.html { render :action => "new" }
+        format.html { redirect_to(trainings_path, :warning => "Workout could not be saved") }
         format.xml  { render :xml => @workout.errors, :status => :unprocessable_entity }
       end
     end

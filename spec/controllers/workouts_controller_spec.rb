@@ -1,49 +1,6 @@
 require 'spec_helper'
 
 describe WorkoutsController do
-  pending
-  def mock_workout(stubs={})
-    (@mock_workout ||= mock_model(Workout).as_null_object).tap do |workout|
-      workout.stub(stubs) unless stubs.empty?
-    end
-  end
-
-  describe "GET index" do
-    it "assigns all workouts as @workouts" do
-      pending
-      Workout.stub(:all) { [mock_workout] }
-      get :index
-      assigns(:workouts).should eq([mock_workout])
-    end
-  end
-
-  describe "GET show" do
-    it "assigns the requested workout as @workout" do
-      pending
-      Workout.stub(:find).with("37") { mock_workout }
-      get :show, :id => "37"
-      assigns(:workout).should be(mock_workout)
-    end
-  end
-
-  describe "GET new" do
-    it "assigns a new workout as @workout" do
-      pending
-      Workout.stub(:new) { mock_workout }
-      get :new
-      assigns(:workout).should be(mock_workout)
-    end
-  end
-
-  describe "GET edit" do
-    it "assigns the requested workout as @workout" do
-      pending
-      Workout.stub(:find).with("37") { mock_workout }
-      get :edit, :id => "37"
-      assigns(:workout).should be(mock_workout)
-    end
-  end
-
   describe "POST create" do
 
     describe "with valid params" do
