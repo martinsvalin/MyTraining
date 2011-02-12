@@ -33,7 +33,7 @@ class TrainingsController < ApplicationController
   # POST /trainings
   # POST /trainings.xml
   def create
-    @training = current_user.trainings.new(params[:training])
+    @training = current_user.trainings.new filtered_params
 
     respond_to do |format|
       if @training.save
@@ -52,7 +52,7 @@ class TrainingsController < ApplicationController
     @training = current_user.trainings.find(params[:id])
 
     respond_to do |format|
-      if @training.update_attributes(params[:training])
+      if @training.update_attributes filtered_params
         format.html { redirect_to(trainings_path, :notice => 'Training was successfully updated.') }
         format.xml  { head :ok }
       else
@@ -75,15 +75,21 @@ class TrainingsController < ApplicationController
   end
 
   private
-  def assign_start_at
-    params[:training][:start_at] = Time.zone.parse "#{params[:training][:start_date]} #{params[:training][:start_time]}"
-    params[:training].delete(:start_date)
-    params[:training].delete(:start_time)
+  def filtered_params
+    @filtered_params ||= params[:training]
+  end
+
+  def assign_start_at(params = filtered_params)
+    params[:start_at] = Time.zone.parse "#{params[:start_date]} #{params[:start_time]}"
+    params.delete(:start_date)
+    params.delete(:start_time)
+    @filtered_params = params
   end
   
-  def assign_end_at
-    params[:training][:end_at] = params[:training][:start_at] + params[:training][:duration].to_i.minutes
-    params[:training].delete(:duration)
+  def assign_end_at(params = filtered_params)
+    params[:end_at] = params[:start_at] + params[:duration].to_i.minutes
+    params.delete(:duration)
+    @filtered_params = params
   end
   
 end

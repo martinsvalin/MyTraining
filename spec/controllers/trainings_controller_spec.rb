@@ -147,19 +147,35 @@ describe TrainingsController do
       end
     end
 
+    describe "filtered params" do
+      it "assigns incoming params to @filtered_params" do
+        post :create, :training => params
+        assigns(:filtered_params).should == params_after_filters
+      end
+    end
+
     describe "assign start_at" do
       it "should set start_at from start_date and start_time" do
-        pending
-        ActionController::Base.any_instance.stubs(:params).returns params
-        controller.instance_eval{assign_start_at}.should == params_after_filters
+        post :create, :training => params
+        assigns(:filtered_params)[:start_at].should be_present
       end
 
-      it "should set end_at from start_at and duration" do
-        pending
+      it "should remove start_date and start_time from params" do
+        post :create, :training => params
+        assigns(:filtered_params)[:start_date].should_not be_present
+        assigns(:filtered_params)[:start_time].should_not be_present
+      end
+    end
+
+    describe "assign start_at" do
+      it "should set start_at from start_date and start_time" do
+        post :create, :training => params
+        assigns(:filtered_params)[:end_at].should be_present
       end
 
-      it "should remove start_date, start_time and duration from params" do
-        pending
+      it "should remove start_date and start_time from params" do
+        post :create, :training => params
+        assigns(:filtered_params)[:duration].should_not be_present
       end
     end
   end
