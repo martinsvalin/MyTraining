@@ -1,25 +1,18 @@
 require 'spec_helper'
 
 describe "trainings/index.html.erb" do
-  # before(:each) do
-  #   assign(:trainings, [
-  #     stub_model(Training,
-  #       :title => "Title",
-  #       :location => "Location"
-  #     ),
-  #     stub_model(Training,
-  #       :title => "Title",
-  #       :location => "Location"
-  #     )
-  #   ])
-  # end
-
+  before(:each) do
+    stub_current_user
+    @week = 6
+    @trainings = [Factory.create(:training), Factory.create(:training)]
+  end
   it "renders a list of trainings" do
-    pending
     render
-    # Run the generator again with the --webrat-matchers flag if you want to use webrat matchers
-    assert_select "tr>td", :text => "Title".to_s, :count => 2
-    # Run the generator again with the --webrat-matchers flag if you want to use webrat matchers
-    assert_select "tr>td", :text => "Location".to_s, :count => 2
+    assert_select "article>header>h1", :text => @trainings.first.title
+    assert_select "article>div.training>span", :text => @trainings.first.location
+  end
+
+  def stub_current_user
+    ActionView::Base.any_instance.stubs(:current_user).returns Factory.create :person
   end
 end
