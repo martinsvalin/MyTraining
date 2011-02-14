@@ -120,6 +120,7 @@ GEM
       rake (>= 0.8.7)
       thor (~> 0.14.4)
     rake (0.8.7)
+    rcov (0.9.9)
     rest-client (1.6.1)
       mime-types (>= 1.16)
     rspec (2.5.0)
@@ -158,5 +159,6 @@ DEPENDENCIES
   mocha
   omniauth
   rails (= 3.0.3)
+  rcov
   rspec-rails
   sqlite3-ruby

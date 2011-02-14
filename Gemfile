@@ -17,4 +17,5 @@ end
 group :test do
   gem 'factory_girl'
   gem 'mocha'
+  gem 'rcov'
 end

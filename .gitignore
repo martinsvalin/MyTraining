@@ -5,3 +5,4 @@ tmp/**/*
 .rvmrc
 config/config.yml
 .DS_Store
+coverage/
